@@ -21,7 +21,14 @@ export const percentColumn = createTextColumn<number | null>({
     return !isNaN(number) ? number / 100 : null
   },
   parsePastedValue: (value) => {
-    const number = parseFloat(value)
-    return !isNaN(number) ? number : null
+    const percentRegex = /^(\d+(\.\d+)?)(%)?$/; // Expressão regular para identificar valores percentuais
+    const match = value.match(percentRegex);
+
+    if (match) {
+      const number = parseFloat(match[1]);
+      return !isNaN(number) ? number / 100 : null;
+    }
+
+    return null;
   },
 })
