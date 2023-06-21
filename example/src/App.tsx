@@ -4,6 +4,7 @@ import {
   Column,
   DataSheetGrid,
   keyColumn,
+  percentColumn,
   textColumn,
 } from '../../src'
 import '../../src/style.css'
@@ -12,6 +13,7 @@ type Row = {
   active: boolean
   firstName: string | null
   lastName: string | null
+  percentage?: any;
 }
 
 function App() {
@@ -33,6 +35,11 @@ function App() {
     {
       ...keyColumn<Row, 'lastName'>('lastName', textColumn),
       title: 'Last name',
+      grow: 2,
+    },
+    {
+      ...keyColumn<Row, 'percentage'>('percentage', percentColumn),
+      title: 'Percentage',
       grow: 2,
     },
   ]
