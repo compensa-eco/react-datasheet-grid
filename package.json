@@ -1,11 +1,11 @@
 {
   "name": "compensa-datasheet-grid",
-  "version": "4.13.0",
+  "version": "4.14.0",
   "description": "An Excel-like React component to create beautiful spreadsheets.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm tsconfig.tsbuildinfo && rimraf ./dist && tsc && cpx \"src/**/*.css\" dist",
+    "build": "rimraf ./dist && tsc && cpx \"src/**/*.css\" dist",
     "start": "concurrently \"tsc --watch\" \"cpx \\\"src/**/*.css\\\" dist --watch\"",
     "format": "prettier --write src/. && prettier --write example/src/.",
     "lint": "eslint src/.",
