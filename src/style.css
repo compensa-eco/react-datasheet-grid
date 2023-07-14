@@ -594,18 +594,17 @@
   text-align: center;
   border-radius: 4px;
  
-  /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
   width: 250px;
   top: 100%;
   left: 50%;
-  margin-left: -135px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  margin-left: -135px; /* Use half of the width, to center the tooltip */
 
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 21px */
+  line-height: 150%;
 
   text-align: start;
   margin-top: 10px;
