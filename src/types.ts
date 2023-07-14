@@ -29,6 +29,7 @@ export type Column<T, C, PasteValue> = {
   id?: string
   headerClassName?: string
   title?: React.ReactNode
+  tooltip?: string
   /** @deprecated Use `basis`, `grow`, and `shrink` instead */
   width?: string | number
   basis: number
@@ -93,7 +94,13 @@ export type AddRowsComponentProps = {
 
 export type ContextMenuItem =
   | {
-      type: 'INSERT_ROW_BELLOW' | 'DELETE_ROW' | 'DUPLICATE_ROW' | 'COPY' | 'CUT' | 'PASTE'
+      type:
+        | 'INSERT_ROW_BELLOW'
+        | 'DELETE_ROW'
+        | 'DUPLICATE_ROW'
+        | 'COPY'
+        | 'CUT'
+        | 'PASTE'
       action: () => void
     }
   | {
