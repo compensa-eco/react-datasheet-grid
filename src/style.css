@@ -95,6 +95,8 @@
 .dsg-cell-header-container {
   padding: 0 10px;
   line-height: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .dsg-cell-header.dsg-cell-gutter {
@@ -576,4 +578,51 @@
   transition: all var(--dsg-transition-duration);
   pointer-events: none;
   background: rgba(0, 0, 0, 0.03);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  padding-left: 4px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #414345;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  border-radius: 4px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  top: 100%;
+  left: 50%;
+  margin-left: -135px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+
+  text-align: start;
+  margin-top: 10px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #414345 transparent;
 }

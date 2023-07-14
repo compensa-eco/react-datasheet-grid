@@ -10,6 +10,7 @@ import {
 import cx from 'classnames'
 import { Cell as CellComponent } from './Cell'
 import { useMemoizedIndexCallback } from '../hooks/useMemoizedIndexCallback'
+import { Tooltip } from 'react-tooltip'
 
 export const Grid = <T extends any>({
   data,
@@ -166,7 +167,33 @@ export const Grid = <T extends any>({
                 )}
               >
                 <div className="dsg-cell-header-container">
-                  {columns[col.index].title}
+                  <span>{columns[col.index].title}</span>
+                  {columns[col.index]?.tooltip && (
+                    <div className="tooltip">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_5208_48884)">
+                          <path
+                            d="M7.9987 14.6668C4.3167 14.6668 1.33203 11.6822 1.33203 8.00016C1.33203 4.31816 4.3167 1.3335 7.9987 1.3335C11.6807 1.3335 14.6654 4.31816 14.6654 8.00016C14.6654 11.6822 11.6807 14.6668 7.9987 14.6668ZM7.33203 10.0002V11.3335H8.66536V10.0002H7.33203ZM8.66536 8.9035C9.20114 8.74201 9.6611 8.39346 9.96147 7.92132C10.2618 7.44918 10.3826 6.88487 10.3019 6.33114C10.2211 5.77742 9.9441 5.27112 9.52137 4.90447C9.09864 4.53781 8.55828 4.33519 7.9987 4.3335C7.45927 4.33345 6.93647 4.52027 6.51923 4.86216C6.10198 5.20405 5.81604 5.67992 5.71003 6.20883L7.01803 6.47083C7.05515 6.28512 7.14424 6.11376 7.27494 5.97671C7.40564 5.83965 7.57257 5.74252 7.75631 5.69663C7.94006 5.65074 8.13305 5.65797 8.31284 5.71748C8.49264 5.77698 8.65184 5.88632 8.77192 6.03277C8.892 6.17922 8.96803 6.35676 8.99115 6.54472C9.01428 6.73269 8.98355 6.92336 8.90254 7.09455C8.82154 7.26574 8.69359 7.4104 8.53358 7.51172C8.37357 7.61303 8.18808 7.66682 7.9987 7.66683C7.82189 7.66683 7.65232 7.73707 7.52729 7.86209C7.40227 7.98712 7.33203 8.15668 7.33203 8.3335V9.3335H8.66536V8.9035Z"
+                            fill="#747678"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_5208_48884">
+                            <rect width="16" height="16" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      <span className="tooltiptext">
+                        {columns[col.index]?.tooltip}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </CellComponent>
             ))}
