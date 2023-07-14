@@ -10,7 +10,6 @@ import {
 import cx from 'classnames'
 import { Cell as CellComponent } from './Cell'
 import { useMemoizedIndexCallback } from '../hooks/useMemoizedIndexCallback'
-import { Tooltip } from 'react-tooltip'
 
 export const Grid = <T extends any>({
   data,
