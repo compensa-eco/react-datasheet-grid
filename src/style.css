@@ -599,7 +599,7 @@
   width: 250px;
   top: 100%;
   left: 50%;
-  margin-left: -135px; /* Use half of the width, to center the tooltip */
+  margin-left: -124px; /* Use half of the width, to center the tooltip */
 
   font-size: 14px;
   font-style: normal;

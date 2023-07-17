@@ -188,9 +188,12 @@ export const Grid = <T extends any>({
                           </clipPath>
                         </defs>
                       </svg>
-                      <span className="tooltiptext">
-                        {columns[col.index]?.tooltip}
-                      </span>
+                      <span
+                        className="tooltiptext"
+                        dangerouslySetInnerHTML={{
+                          __html: columns[col.index].tooltip ?? '',
+                        }}
+                      />
                     </div>
                   )}
                 </div>
