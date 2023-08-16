@@ -3,6 +3,7 @@ import {
   checkboxColumn,
   Column,
   DataSheetGrid,
+  floatColumn,
   keyColumn,
   percentColumn,
   textColumn,
@@ -13,7 +14,8 @@ type Row = {
   active: boolean
   firstName: string | null
   lastName: string | null
-  percentage?: any;
+  percentage?: any
+  float?: any
 }
 
 function App() {
@@ -35,12 +37,14 @@ function App() {
     {
       ...keyColumn<Row, 'lastName'>('lastName', textColumn),
       title: 'Last name',
-      grow: 2,
     },
     {
       ...keyColumn<Row, 'percentage'>('percentage', percentColumn),
       title: 'Percentage',
-      grow: 2,
+    },
+    {
+      ...keyColumn<Row, 'float'>('float', floatColumn),
+      title: 'Float',
     },
   ]
 
