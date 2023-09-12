@@ -19,10 +19,16 @@ export const floatColumn = createTextColumn<number | null>({
       : '',
   parseUserInput: (value) => {
     const number = parseNumber(value) || 0
+    if ((isNaN(number)) || value === '') {
+      return null
+    }
     return !isNaN(number) ? number : null
   },
   parsePastedValue: (value) => {
     const number = parseNumber(value) || 0
+    if ((isNaN(number)) || value === '') {
+      return null
+    }
     return !isNaN(number) ? number : null
   },
 })
