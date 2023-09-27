@@ -126,6 +126,7 @@ export type Operation = {
 
 export type DataSheetGridProps<T> = {
   value?: T[]
+  children?: React.ReactNode
   style?: React.CSSProperties
   className?: string
   rowClassName?:

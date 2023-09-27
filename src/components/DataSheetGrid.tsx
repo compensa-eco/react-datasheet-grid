@@ -6,6 +6,9 @@ import React, {
   useRef,
   useState,
 } from 'react'
+
+
+
 import {
   Cell,
   Column,
@@ -42,6 +45,7 @@ import { Grid } from './Grid'
 import { SelectionRect } from './SelectionRect'
 import { useRowHeights } from '../hooks/useRowHeights'
 
+
 const DEFAULT_DATA: any[] = []
 const DEFAULT_COLUMNS: Column<any, any, any>[] = []
 const DEFAULT_CREATE_ROW: DataSheetGridProps<any>['createRow'] = () => ({})
@@ -61,6 +65,7 @@ export const DataSheetGrid = React.memo(
     <T extends any>(
       {
         value: data = DEFAULT_DATA,
+        children,
         className,
         style,
         height: maxHeight = 400,
@@ -1796,7 +1801,11 @@ export const DataSheetGrid = React.memo(
             stopEditing={stopEditing}
             cellClassName={cellClassName}
             onScroll={onScroll}
+            fakeHeader={children}
           >
+
+          
+
             <SelectionRect
               columnRights={columnRights}
               columnWidths={columnWidths}
@@ -1813,7 +1822,9 @@ export const DataSheetGrid = React.memo(
               editing={editing}
               isCellDisabled={isCellDisabled}
               expandSelection={expandSelection}
+
             />
+            {/* {children} */}
           </Grid>
           <div
             ref={afterTabIndexRef}
