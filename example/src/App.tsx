@@ -91,9 +91,8 @@ function App() {
         background: '#f3f3f3',
       }}
     >
-      {/* <DataSheetGrid value={data} onChange={setData} columns={columns} >
-        <p>Some content</p>
-       </DataSheetGrid> */}
+      <DataSheetGrid value={data} onChange={setData} columns={columns} >
+       </DataSheetGrid>
 
        <DynamicDataSheetGrid value={data} onChange={setData} columns={columns}>
         
