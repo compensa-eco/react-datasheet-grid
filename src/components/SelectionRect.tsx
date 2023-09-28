@@ -42,6 +42,7 @@ const buildClipPath = (
 export const SelectionRect = React.memo<SelectionContextType>(
   ({
     fakeHeader,
+    childrenHeight,
     columnWidths,
     columnRights,
     headerRowHeight,
@@ -87,7 +88,7 @@ export const SelectionRect = React.memo<SelectionContextType>(
     const extraPixelH = (colI: number): number => {
       return colI < columnWidths.length - (hasStickyRightColumn ? 3 : 2) ? 1 : 0
     }
-    const headerSizeFit = fakeHeader === undefined ? 0: 22 
+    const headerSizeFit = fakeHeader === undefined ? 0: childrenHeight || 22 
     
     const activeCellRect = activeCell && {
       width: columnWidths[activeCell.col + 1] + extraPixelH(activeCell.col),

@@ -58,6 +58,7 @@ export type Column<T, C, PasteValue> = {
 
 export type SelectionContextType = {
   fakeHeader?: ReactNode
+  childrenHeight?: number
   columnRights?: number[]
   columnWidths?: number[]
   activeCell: Cell | null
@@ -128,6 +129,7 @@ export type Operation = {
 export type DataSheetGridProps<T> = {
   value?: T[]
   children?: React.ReactNode
+  childrenHeight?: number
   style?: React.CSSProperties
   className?: string
   rowClassName?:
