@@ -1803,10 +1803,8 @@ export const DataSheetGrid = React.memo(
             onScroll={onScroll}
             fakeHeader={children}
           >
-
-          
-
             <SelectionRect
+              fakeHeader={children}
               columnRights={columnRights}
               columnWidths={columnWidths}
               activeCell={activeCell}
@@ -1824,7 +1822,6 @@ export const DataSheetGrid = React.memo(
               expandSelection={expandSelection}
 
             />
-            {/* {children} */}
           </Grid>
           <div
             ref={afterTabIndexRef}

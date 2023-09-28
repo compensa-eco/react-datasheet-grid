@@ -225,7 +225,7 @@ export const Grid = <T extends any>({
               )}
               style={{
                 height: row.size,
-                top: fakeHeader === undefined ? row.start : row.start + 40,
+                top: fakeHeader === undefined ? row.start : row.start + 22,
                 width: fullWidth ? '100%' : colVirtualizer.getTotalSize(),
               }}
             >

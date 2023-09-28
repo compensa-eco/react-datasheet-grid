@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 export type Cell = {
   col: number
@@ -57,6 +57,7 @@ export type Column<T, C, PasteValue> = {
 }
 
 export type SelectionContextType = {
+  fakeHeader?: ReactNode
   columnRights?: number[]
   columnWidths?: number[]
   activeCell: Cell | null
