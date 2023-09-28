@@ -133,7 +133,7 @@ export const Grid = <T extends any>({
       onScroll={onScroll}
       style={{ height: displayHeight }}
     >
-      
+
       <div
         ref={innerRef}
         style={{
@@ -225,7 +225,7 @@ export const Grid = <T extends any>({
               )}
               style={{
                 height: row.size,
-                top: row.start,
+                top: fakeHeader === undefined ? row.start : row.start + 40,
                 width: fullWidth ? '100%' : colVirtualizer.getTotalSize(),
               }}
             >
