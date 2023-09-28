@@ -37,6 +37,7 @@ export const Grid = <T extends any>({
   stopEditing,
   onScroll,
   fakeHeader,
+  childrenHeight
 }: {
   data: T[]
   columns: Column<T, any, any>[]
@@ -63,6 +64,7 @@ export const Grid = <T extends any>({
   stopEditing: (opts?: { nextRow?: boolean }) => void
   onScroll?: React.UIEventHandler<HTMLDivElement>
   fakeHeader?: ReactNode
+  childrenHeight?: number
 }) => {
   const rowVirtualizer = useVirtualizer({
     count: data.length,
@@ -133,7 +135,7 @@ export const Grid = <T extends any>({
       onScroll={onScroll}
       style={{ height: displayHeight }}
     >
-      
+
       <div
         ref={innerRef}
         style={{
@@ -225,7 +227,7 @@ export const Grid = <T extends any>({
               )}
               style={{
                 height: row.size,
-                top: row.start,
+                top: fakeHeader === undefined ? row.start : row.start + (childrenHeight || 22),
                 width: fullWidth ? '100%' : colVirtualizer.getTotalSize(),
               }}
             >

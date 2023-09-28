@@ -41,6 +41,8 @@ const buildClipPath = (
 
 export const SelectionRect = React.memo<SelectionContextType>(
   ({
+    fakeHeader,
+    childrenHeight,
     columnWidths,
     columnRights,
     headerRowHeight,
@@ -86,12 +88,13 @@ export const SelectionRect = React.memo<SelectionContextType>(
     const extraPixelH = (colI: number): number => {
       return colI < columnWidths.length - (hasStickyRightColumn ? 3 : 2) ? 1 : 0
     }
-
+    const headerSizeFit = fakeHeader === undefined ? 0: childrenHeight || 22 
+    
     const activeCellRect = activeCell && {
       width: columnWidths[activeCell.col + 1] + extraPixelH(activeCell.col),
       height: rowHeight(activeCell.row).height + extraPixelV(activeCell.row),
       left: columnRights[activeCell.col],
-      top: rowHeight(activeCell.row).top + headerRowHeight,
+      top: rowHeight(activeCell.row).top + headerRowHeight+headerSizeFit,
     }
 
     const selectionRect = selection && {
@@ -105,7 +108,7 @@ export const SelectionRect = React.memo<SelectionContextType>(
         rowHeight(selection.min.row).top +
         extraPixelV(selection.max.row),
       left: columnRights[selection.min.col],
-      top: rowHeight(selection.min.row).top + headerRowHeight,
+      top: rowHeight(selection.min.row).top + headerRowHeight+headerSizeFit,
     }
 
     const minSelection = selection?.min || activeCell

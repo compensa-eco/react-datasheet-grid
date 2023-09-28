@@ -66,6 +66,7 @@ export const DataSheetGrid = React.memo(
       {
         value: data = DEFAULT_DATA,
         children,
+        childrenHeight,
         className,
         style,
         height: maxHeight = 400,
@@ -1802,11 +1803,11 @@ export const DataSheetGrid = React.memo(
             cellClassName={cellClassName}
             onScroll={onScroll}
             fakeHeader={children}
+            childrenHeight={childrenHeight}
           >
-
-          
-
             <SelectionRect
+              childrenHeight={childrenHeight}
+              fakeHeader={children}
               columnRights={columnRights}
               columnWidths={columnWidths}
               activeCell={activeCell}
@@ -1824,7 +1825,6 @@ export const DataSheetGrid = React.memo(
               expandSelection={expandSelection}
 
             />
-            {/* {children} */}
           </Grid>
           <div
             ref={afterTabIndexRef}

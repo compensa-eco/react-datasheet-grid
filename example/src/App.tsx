@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   checkboxColumn,
   Column,
@@ -80,7 +80,18 @@ function App() {
     { title: 'Local de residência e trabalho', width: 1920 },
     { title: 'Dias trabalhados presencialmente', width: 1296 },
     { title: 'Dias trabalhados em home-office', width: 300 },
-  ];
+  ]
+
+  const [childrenHeight, setChildrenHeight] = useState(0)
+  const childrenRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (childrenRef.current) {
+      // Obtém a altura do elemento que contém os children
+      const height = childrenRef.current.clientHeight
+      setChildrenHeight(height)
+    }
+  }, [])
 
   return (
     <div
@@ -91,12 +102,14 @@ function App() {
         background: '#f3f3f3',
       }}
     >
-      <DataSheetGrid value={data} onChange={setData} columns={columns} >
-       </DataSheetGrid>
+      <DataSheetGrid
+        value={data}
+        onChange={setData}
+        columns={columns}
+      ></DataSheetGrid>
 
-       <DynamicDataSheetGrid value={data} onChange={setData} columns={columns}>
-        
-        <div className="overflow-x-hidden " >
+      <DynamicDataSheetGrid value={data} onChange={setData} columns={columns} childrenHeight={childrenHeight}>
+        <div className="overflow-x-hidden " ref={childrenRef}>
           <table className="w-full min-w-full">
             <thead>
               <tr>
@@ -106,8 +119,9 @@ function App() {
                     style={{
                       minWidth: `${item.width}px`,
                       width: `${item.width}px`,
+                      fontSize: '0.75rem',
                     }}
-                    className={`bg-gray-50 border-b border-l border-gray-200 px-4 py-2 font-semibold text-sm text-gray-600
+                    className={`bg-gray-50 border-b border-l border-gray-200 px-4 py-2 font-semibold text-lg text-gray-600
                 
                 `}
                   >
@@ -118,7 +132,7 @@ function App() {
             </thead>
           </table>
         </div>
-          </DynamicDataSheetGrid>
+      </DynamicDataSheetGrid>
     </div>
   )
 }
