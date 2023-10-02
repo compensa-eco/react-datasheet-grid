@@ -108,7 +108,9 @@ function App() {
         columns={columns}
       ></DataSheetGrid>
 
-      <DynamicDataSheetGrid value={data} onChange={setData} columns={columns} childrenHeight={childrenHeight}>
+      <DynamicDataSheetGrid value={data} onChange={setData} columns={columns} 
+      childrenHeight={childrenHeight}
+      >
         <div className="overflow-x-hidden " ref={childrenRef}>
           <table className="w-full min-w-full">
             <thead>

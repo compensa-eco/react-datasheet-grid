@@ -7,8 +7,6 @@ import React, {
   useState,
 } from 'react'
 
-
-
 import {
   Cell,
   Column,
@@ -44,7 +42,6 @@ import { getAllTabbableElements } from '../utils/tab'
 import { Grid } from './Grid'
 import { SelectionRect } from './SelectionRect'
 import { useRowHeights } from '../hooks/useRowHeights'
-
 
 const DEFAULT_DATA: any[] = []
 const DEFAULT_COLUMNS: Column<any, any, any>[] = []
@@ -221,7 +218,7 @@ export const DataSheetGrid = React.memo(
       // Blur any element on focusing the grid
       useEffect(() => {
         if (activeCell !== null) {
-          ; (document.activeElement as HTMLElement).blur()
+          ;(document.activeElement as HTMLElement).blur()
           window.getSelection()?.removeAllRanges()
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -238,9 +235,12 @@ export const DataSheetGrid = React.memo(
           const outerBoundingClientRect =
             includeSticky && getOuterBoundingClientRect(force)
 
+          const headerSizeFit =
+            children === undefined ? 0 : childrenHeight || 22
+
           if (innerBoundingClientRect && columnRights && columnWidths) {
             let x = event.clientX - innerBoundingClientRect.left
-            let y = event.clientY - innerBoundingClientRect.top
+            let y = event.clientY - innerBoundingClientRect.top - headerSizeFit
 
             if (outerBoundingClientRect) {
               if (
@@ -1823,7 +1823,6 @@ export const DataSheetGrid = React.memo(
               editing={editing}
               isCellDisabled={isCellDisabled}
               expandSelection={expandSelection}
-
             />
           </Grid>
           <div
