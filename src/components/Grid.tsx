@@ -37,7 +37,7 @@ export const Grid = <T extends any>({
   stopEditing,
   onScroll,
   fakeHeader,
-  childrenHeight
+  childrenHeight,
 }: {
   data: T[]
   columns: Column<T, any, any>[]
@@ -127,15 +127,18 @@ export const Grid = <T extends any>({
   const selectionColMax = selection?.max.col ?? activeCell?.col
   const selectionMinRow = selection?.min.row ?? activeCell?.row
   const selectionMaxRow = selection?.max.row ?? activeCell?.row
-
   return (
     <div
       ref={outerRef}
       className="dsg-container"
       onScroll={onScroll}
-      style={{ height: displayHeight }}
+      style={{
+        height:
+          fakeHeader === undefined
+            ? displayHeight
+            : displayHeight + (childrenHeight || 22),
+      }}
     >
-
       <div
         ref={innerRef}
         style={{
@@ -227,7 +230,10 @@ export const Grid = <T extends any>({
               )}
               style={{
                 height: row.size,
-                top: fakeHeader === undefined ? row.start : row.start + (childrenHeight || 22),
+                top:
+                  fakeHeader === undefined
+                    ? row.start
+                    : row.start + (childrenHeight || 22),
                 width: fullWidth ? '100%' : colVirtualizer.getTotalSize(),
               }}
             >
